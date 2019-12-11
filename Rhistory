@@ -1,0 +1,512 @@
+)
+clean_data_value <- sapply(
+soil_poll,
+function(x) {x$Cells$EstimatedindexValue}
+)
+clean_data_geo <- t(clean_data_geo)
+soil_df <- cbind(clean_data_geo, clean_data_level)
+soil_df <- cbind(soil_df, clean_data_value)
+colnames(soil_df) <- c('lon', 'lat', 'level', 'year', 'value')
+View(soil_df)
+soil_df <- cbind(clean_data_geo, clean_data_level)
+soil_df <- cbind(soil_df, clean_data_year)
+soil_df <- cbind(soil_df, clean_data_value)
+colnames(soil_df) <- c('lon', 'lat', 'level', 'year', 'value')
+View(soil_df)
+soil_df <- as.data.frame(soil_df)
+colnames(soil_df) <- c('lon', 'lat', 'level', 'year', 'value')
+soil_df <- unfactor(soil_df)
+soil_df <- soil_df %>%
+filter(year=="2018")
+Moscow_map +
+geom_point(data = soil_df,
+aes(x = lon,
+y = lat, color=soil_df$level),
+alpha=0.7, size = 3)+
+geom_label_repel(aes(label=value),
+box.padding = 0.35,
+point.padding = 0.5,
+segment.colour = 'grey50')
+Moscow_map +
+ggplot(soil_df, aes(x=lon, y = lat))+
+geom_point(color = 'level', size = 4, alpha = 0.7)+
+geom_label_repel(aes(label=value),
+box.padding = 0.35,
+point.padding = 0.5,
+segment.colour = 'grey50')
+Moscow_map +
+geom_point(data = soil_df,
+aes(x = lon,
+y = lat, color=soil_df$level),
+alpha=0.7, size = 3)+
+geom_label_repel(data = soil_df, aes(x = lon, y = lat, label=soil_df$value),
+box.padding = 0.35,
+point.padding = 0.5,
+segment.colour = 'grey50')
+Moscow_map +
+geom_point(data = soil_df,
+aes(x = lon,
+y = lat, color=soil_df$level),
+alpha=0.7, size = 3)+
+geom_label_repel(data = soil_df, aes(x = lon, y = lat, label=value),
+box.padding = 0.35,
+point.padding = 0.5,
+segment.colour = 'grey50')
+Moscow_map +
+geom_point(data = soil_df,
+aes(x = lon,
+y = lat, color=soil_df$level),
+alpha=0.7, size = 3)
+soil_df_varning <- soil_df %>%
+filter(level = "умеренно-опасный")
+soil_df_varning <- soil_df %>%
+filter(level == "умеренно-опасный")
+Moscow_map +
+geom_point(data = soil_df_varning,
+aes(x = lon,
+y = lat, color=level),
+alpha=0.7, size = 3)+
+geom_label_repel(data = soil_df_varning, aes(x = lon, y = lat, label=value),
+box.padding = 0.35,
+point.padding = 0.5,
+segment.colour = 'grey50')
+soil_df_varning <- soil_df %>%
+filter(level == "средний")
+Moscow_map +
+geom_point(data = soil_df_varning,
+aes(x = lon,
+y = lat, color=level),
+alpha=0.7, size = 3)+
+geom_label_repel(data = soil_df_varning, aes(x = lon, y = lat, label=value),
+box.padding = 0.35,
+point.padding = 0.5,
+segment.colour = 'grey50')
+Moscow_map +
+geom_point(data = soil_df_varning,
+aes(x = lon,
+y = lat, color=level),
+alpha=0.7, size = 3)+
+geom_label_repel(data = soil_df_varning, aes(x = lon, y = lat, label=value),
+box.padding = 0.35,
+point.padding = 0.5,
+segment.colour = 'grey50',
+alpha = 0.8)
+save.plot("moscow.png")
+add_data <- function(x){
+data_url <- x
+data_url <- paste0(data_url, api_key)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+}
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+library('rjson')
+library('ggplot2')
+library('dplyr')
+library('devtools')
+library('httr')
+library('ggmap')
+library('varhandle')
+library('ggrepel')
+source("R/functions.R")
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+#добавляем в окружение значение api key от data.mos.ru
+api_key <- '5e3250210ae739fdff8a2a110ddc6506'
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+View(add_data)
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+source("R/functions.R")
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+add_data <- function(x){
+data_url <- x
+data_url <- paste0(data_url, api_key)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+}
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+data_url <- paste0(data_url, api_key)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+#добавляем в окружение значение api key от data.mos.ru
+api_key <- '5e3250210ae739fdff8a2a110ddc6506'
+ad_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+source("R/functions.R")
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+View(add_data)
+View(add_data)
+add_data <- function(x){
+data_url <- x
+data_url <- paste0(data_url, api_key)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+}
+#скачиваем данные
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+add_data <- function(x){
+data_url <- x
+data_url <- paste0(data_url, api_key)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+}
+#скачиваем данные
+add_data('https://apidata.mos.ru/v1/datasets/2452/rows?api_key=')
+add_data <- function(api_key){
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+data_url <- paste0(data_url, api_key)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+}
+add_data('5e3250210ae739fdff8a2a110ddc6506')
+add_data(x='5e3250210ae739fdff8a2a110ddc6506')
+add_data <- function(x){
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+data_url <- paste0(data_url, x)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+}
+add_data(x='5e3250210ae739fdff8a2a110ddc6506')
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+data_url <- paste0(data_url, x)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+data_frame_making <- function() {
+clean_data_geo <- sapply(
+soil_poll,
+function(x) {x$Cells$geoData$coordinates}
+)
+clean_data_level <- sapply(
+soil_poll,
+function(x) {x$Cells$PollutionLevel}
+)
+clean_data_year <- sapply(
+soil_poll,
+function(x) {x$Cells$Year}
+)
+clean_data_value <- sapply(
+soil_poll,
+function(x) {x$Cells$EstimatedindexValue}
+)
+clean_data_geo <- t(clean_data_geo)
+soil_df <- cbind(clean_data_geo, clean_data_level)
+soil_df <- cbind(soil_df, clean_data_year)
+soil_df <- cbind(soil_df, clean_data_value)
+soil_df <- as.data.frame(soil_df)
+colnames(soil_df) <- c('lon', 'lat', 'level', 'year', 'value')
+soil_df <- unfactor(soil_df)
+}
+data_frame_making()
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+data_url <- paste0(data_url, x)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+library('rjson')
+library('ggplot2')
+library('dplyr')
+library('devtools')
+library('httr')
+library('ggmap')
+library('varhandle')
+library('ggrepel')
+#добавляем в окружение значение api key от data.mos.ru
+api_key <- '5e3250210ae739fdff8a2a110ddc6506'
+#скачиваем данные
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+data_url <- paste0(data_url, x)
+ata_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+data_url <- paste0(data_url, api_key)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+data_frame_making()
+data_frame_making <- function() {
+clean_data_geo <- sapply(
+soil_poll,
+function(x) {x$Cells$geoData$coordinates}
+)
+clean_data_level <- sapply(
+soil_poll,
+function(x) {x$Cells$PollutionLevel}
+)
+clean_data_year <- sapply(
+soil_poll,
+function(x) {x$Cells$Year}
+)
+clean_data_value <- sapply(
+soil_poll,
+function(x) {x$Cells$EstimatedindexValue}
+)
+clean_data_geo <- t(clean_data_geo)
+soil_df <- cbind(clean_data_geo, clean_data_level)
+soil_df <- cbind(soil_df, clean_data_year)
+soil_df <- cbind(soil_df, clean_data_value)
+soil_df <- as.data.frame(soil_df)
+colnames(soil_df) <- c('lon', 'lat', 'level', 'year', 'value')
+soil_df <- unfactor(soil_df)
+}
+data_frame_making()
+View(data_frame_making)
+View(data_frame_making)
+data_frame_making()
+#добавляем в окружение значение api key от data.mos.ru
+api_key <- '5e3250210ae739fdff8a2a110ddc6506'
+data_import <- function(x,y){
+data_url <- paste0(y, x)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+}
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+data_import <- function(x,y){
+data_url <- paste0(y, x)
+response <- GET(y)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+}
+data_import(api_key, data_url)
+data_import <- function(x,y){
+data_url <- paste0(y, x)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+}
+data_import(api_key, data_url)
+data_import <- function(x,y){
+data_url <- paste0(y, x)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <- fromJSON(soil_poll_content)
+print(soil_poll)
+}
+data_import(api_key, data_url)
+api_key <- '5e3250210ae739fdff8a2a110ddc6506'
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+data_import <- function(x,y){
+data_url <- paste0(y, x)
+response <- GET(data_url)
+soil_poll_content <- content(response, as='text')
+soil_poll <<- fromJSON(soil_poll_content)
+}
+data_import(api_key, data_url)
+#загружаем функции
+source("R/functions.R")
+api_key <- '5e3250210ae739fdff8a2a110ddc6506'
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+#импортируем данные
+data_import(api_key, data_url)
+#загружаем функции
+source("R/functions.R")
+#преобразуем данные в data frame
+data_frame_making()
+data_frame_making <- function(){
+clean_data_geo <- sapply(
+soil_poll,
+function(x) {x$Cells$geoData$coordinates}
+)
+clean_data_level <- sapply(
+soil_poll,
+function(x) {x$Cells$PollutionLevel}
+)
+clean_data_year <- sapply(
+soil_poll,
+function(x) {x$Cells$Year}
+)
+clean_data_value <- sapply(
+soil_poll,
+function(x) {x$Cells$EstimatedindexValue}
+)
+clean_data_geo <- t(clean_data_geo)
+soil_df <- cbind(clean_data_geo, clean_data_level)
+soil_df <- cbind(soil_df, clean_data_year)
+soil_df <- cbind(soil_df, clean_data_value)
+soil_df <- as.data.frame(soil_df)
+colnames(soil_df) <- c('lon', 'lat', 'level', 'year', 'value')
+soil_df <- unfactor(soil_df)
+#отфильтровываем только данные по 2018 году
+soil_df <<- soil_df %>%
+filter(year=="2018")
+}
+#загружаем функции
+source("R/functions.R")
+#преобразуем данные в data frame
+data_frame_making()
+View(soil_df)
+#загружаем функции
+source("R/functions.R")
+#преобразуем данные в data frame
+data_frame_making()
+#загружаем функции
+source("R/functions.R")
+#загружаем функции
+source("R/functions.R")
+#загружаем функции
+source("R/functions.R")
+#загружаем функции
+source("R/functions.R")
+#строим графики
+plot_maker()
+View(Soil_poll_plot1)
+Soil_poll_plot1
+#загружаем функции
+source("R/functions.R")
+#загружаем функции
+source("R/functions.R")
+api_key <- '5e3250210ae739fdff8a2a110ddc6506'
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+#импортируем данные
+data_import(api_key, data_url)
+#преобразуем данные в data frame
+data_frame_making()
+#строим графики
+plot_maker1()
+plot_maker2()
+Soil_poll_plot1
+Soil_poll_plot2
+View(soil_df)
+View(soil_df_varning)
+View(soil_df)
+#импортируем данные
+data_import(api_key, data_url)
+#загружаем функции
+source("R/functions.R")
+#преобразуем данные в data frame
+data_frame_making()
+#строим графики
+plot_maker1()
+plot_maker2()
+Soil_poll_plot1
+Soil_poll_plot2
+#загружаем функции
+source("R/functions.R")
+data_varning()
+#загружаем функции
+source("R/functions.R")
+data_varning()
+#загружаем функции
+source("R/functions.R")
+data_varning()
+View(soil_df)
+#загружаем функции
+source("R/functions.R")
+#импортируем данные
+data_import(api_key, data_url)
+#преобразуем данные в data frame
+data_frame_making()
+#загружаем функции
+source("R/functions.R")
+#импортируем данные
+data_import(api_key, data_url)
+#преобразуем данные в data frame
+data_frame_making()
+#загружаем функции
+source("R/functions.R")
+#преобразуем данные в data frame
+data_frame_making()
+View(soil_df)
+#загружаем функции
+source("R/functions.R")
+#преобразуем данные в data frame
+data_frame_making()
+#загружаем функции
+source("R/functions.R")
+#преобразуем данные в data frame
+data_frame_making()
+#загружаем функции
+source("R/functions.R")
+api_key <- '5e3250210ae739fdff8a2a110ddc6506'
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+#импортируем данные
+data_import(api_key, data_url)
+#преобразуем данные в data frame
+data_frame_making()
+soil_df$level == "средний"
+#загружаем функции
+source("R/functions.R")
+#преобразуем данные в data frame
+data_frame_making()
+data_varning()
+#загружаем функции
+source("R/functions.R")
+#преобразуем данные в data frame
+data_frame_making()
+#загружаем функции
+source("R/functions.R")
+#преобразуем данные в data frame
+data_frame_making()
+#загружаем функции
+source("R/functions.R")
+api_key <- '5e3250210ae739fdff8a2a110ddc6506'
+data_url <- 'https://apidata.mos.ru/v1/datasets/2452/rows?api_key='
+#импортируем данные
+data_import(api_key, data_url)
+#преобразуем данные в data frame
+data_frame_making()
+soil_df_var <<- soil_df %>%
+filter(level == "средний")
+plot_maker1()
+plot_maker2()
+Soil_poll_plot1
+Soil_poll_plot2
+#загружаем функции
+source("R/functions.R")
+plot_maker2()
+#загружаем функции
+source("R/functions.R")
+plot_maker2()
+Soil_poll_plot2
+install.packages("lintr")
+library(lintr)
+lint("main.R")
+lint("main.R")
+lint("main.R")
+lint("main.R")
+lint("main.R")
+lint("functions.R")
+lint("functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+lint("R/functions.R")
+source("R/functions.R")
+#добавляем в окружение значение api key
+api_key <- "5e3250210ae739fdff8a2a110ddc6506"
+data_url <- "https://apidata.mos.ru/v1/datasets/2452/rows?api_key="
+#импортируем данные
+data_import(api_key, data_url)
+#преобразуем данные в data frame
+data_frame_making()
+#отфильтровываем только данные по 2018 году
+soil_df_var <<- soil_df %>%
+filter(level == "средний")
+#строим графики
+plot_maker1()
+plot_maker2()
+soil_poll_plot1
+soil_poll_plot2
